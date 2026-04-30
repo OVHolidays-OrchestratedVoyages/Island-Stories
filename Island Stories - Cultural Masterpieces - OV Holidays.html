@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Island Stories — Cultural Masterpieces · OV Holidays</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0E0C0A;
+      --cream: #FDFBF7;
+      --warm: #F7F3EC;
+      --rule: #E2DBD0;
+      --gold: #B8955A;
+      --mid: #6B6560;
+      --blue-deep: #0E0C0A;
+      --blue-mid: #6B6560;
+      --blue-light: #6B6560;
+      --cream-dark: #F7F3EC;
+      --cream-light: #FDFBF7;
+      --text-dark: #0E0C0A;
+      --text-mid: #6B6560;
+      --text-light: #9A9490;
+      --white: #ffffff;
+      --gold-light: #CFA96E;
+      --gold-dark: #9A7740;
+      --font-sans: 'DM Sans', sans-serif;
+      --font-serif: 'Cormorant Garamond', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('images/hero.jpg') center top / cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,15,12,0.50) 0%, rgba(10,15,12,0.30) 45%, rgba(10,15,12,0.75) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+    .hero-subtitle {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 10px;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .hero-scroll span { display: block; width: 1px; height: 50px; background: rgba(255,255,255,0.4); margin: 0 auto; animation: scrollline 2s ease-in-out infinite; }
+    @keyframes scrollline { 0%,100%{opacity:0.3;transform:scaleY(0.5);transform-origin:top;} 50%{opacity:1;transform:scaleY(1);} }
+
+    /* NAV */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--blue-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .sticky-nav::-webkit-scrollbar { display: none; }
+    .nav-inner { display: flex; align-items: center; gap: 0; white-space: nowrap; }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 14px 18px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-item .nav-date { font-size: 16px; font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1; margin-bottom: 4px; color: rgba(255,255,255,0.7); }
+    .nav-item:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+    .nav-item:hover .nav-date { color: var(--gold-light); }
+
+    /* INTRO */
+    .intro-section { background: var(--white); padding: 80px 24px 70px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .container-wide { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 16px; }
+    .intro-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 2.5vw, 26px); font-weight: 300; line-height: 1.65; color: var(--text-dark); }
+    .intro-divider { display: flex; align-items: center; gap: 16px; margin: 40px 0; }
+    .intro-divider::before, .intro-divider::after { content: ''; flex: 1; height: 1px; background: var(--cream-dark); }
+    .intro-divider span { font-size: 18px; color: var(--gold); }
+
+    /* OVERVIEW TABLE */
+    .overview-section { background: var(--cream-dark); padding: 70px 24px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 400; color: var(--blue-deep); margin-bottom: 8px; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 40px; }
+    .itinerary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .itinerary-table th { background: var(--blue-deep); color: rgba(255,255,255,0.85); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; font-weight: 500; padding: 14px 18px; text-align: left; }
+    .itinerary-table td { padding: 16px 18px; border-bottom: 1px solid rgba(0,0,0,0.06); vertical-align: top; color: var(--text-mid); }
+    .itinerary-table tr:nth-child(even) td { background: rgba(255,255,255,0.5); }
+    .itinerary-table tr:last-child td { border-bottom: none; }
+    .td-date { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--blue-deep); white-space: nowrap; }
+    .td-location { font-weight: 600; font-size: 12px; letter-spacing: 0.5px; color: var(--blue-mid); }
+    .td-activity { line-height: 1.5; }
+    .td-hotel { font-weight: 500; }
+    .td-meals { display: inline-flex; gap: 6px; flex-wrap: wrap; }
+    .meal-badge { display: inline-block; padding: 3px 8px; border-radius: 2px; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+    .meal-b { background: var(--cream-dark); color: var(--blue-deep); }
+    .meal-d { background: var(--blue-deep); color: var(--white); }
+    .meal-ai { background: var(--gold); color: var(--white); }
+
+    /* HIGHLIGHTS */
+    .highlights-section { background: var(--blue-deep); padding: 70px 24px; color: var(--white); }
+    .highlights-section .section-title { color: var(--white); }
+    .highlights-section .section-label { color: var(--gold); }
+    .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); margin-top: 40px; }
+    .highlight-item { background: var(--blue-deep); padding: 24px 28px; }
+    .highlight-text { font-size: 13px; font-weight: 400; letter-spacing: 0.3px; line-height: 1.6; color: rgba(255,255,255,0.85); display:block; }
+
+    /* DAY CARDS */
+    .day-card { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .day-card:nth-child(even) { direction: rtl; }
+    .day-card:nth-child(even) > * { direction: ltr; }
+    .day-image { background: var(--blue-mid) center/cover no-repeat; min-height: 420px; }
+    .day-content { background: var(--white); padding: 60px 52px; display: flex; flex-direction: column; justify-content: center; }
+    .day-number { font-family: 'Cormorant Garamond', serif; font-size: 120px; font-weight: 300; line-height: 0.8; color: var(--cream-dark); margin-bottom: 8px; letter-spacing: -4px; }
+    .day-label { font-size: 9px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+    .day-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 32px); font-weight: 400; color: var(--blue-deep); margin-bottom: 6px; line-height: 1.2; }
+    .day-meals { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+    .day-divider { width: 40px; height: 1px; background: var(--gold); margin-bottom: 20px; }
+    .day-body { font-size: 13.5px; line-height: 1.8; color: var(--text-mid); }
+    .day-body p { margin-bottom: 14px; }
+    .day-body p:last-child { margin-bottom: 0; }
+    .day-body strong { color: var(--text-dark); font-weight: 600; }
+    .travel-info { display: flex; flex-direction: column; gap: 6px; background: var(--cream-dark); border-left: 3px solid var(--gold); padding: 14px 18px; margin: 16px 0; font-size: 12px; color: var(--text-mid); }
+    .travel-info span { display: flex; align-items: center; gap: 8px; }
+    .hotel-block { margin-top: 24px; padding: 16px 20px; background: var(--blue-deep); color: var(--white); }
+    .hotel-block .hotel-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .hotel-block .hotel-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; }
+    .hotel-block .hotel-room { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 2px; letter-spacing: 0.5px; }
+
+    /* NOTES */
+    .notes-section { background: var(--white); padding: 70px 24px; }
+    .notes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 40px; }
+    .note-card { padding: 28px; background: var(--cream); border-top: 3px solid var(--blue-deep); }
+    .note-card-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: var(--blue-deep); margin-bottom: 10px; }
+    .note-card-text { font-size: 13px; line-height: 1.7; color: var(--text-mid); }
+
+    /* FOOTER */
+    .footer { background: var(--blue-deep); padding: 50px 24px 40px; text-align: center; color: rgba(255,255,255,0.55); }
+    .footer-text { font-size: 11px; letter-spacing: 2px; line-height: 2; }
+    .footer-gold { color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .day-card { grid-template-columns: 1fr; }
+      .day-card:nth-child(even) { direction: ltr; }
+      .day-image { min-height: 280px; order: -1 !important; }
+      .day-content { padding: 36px 24px; }
+      .day-number { font-size: 80px; }
+      .itinerary-table { display: block; overflow-x: auto; }
+      .nav-item { padding: 12px 12px; }
+      .nav-item .nav-date { font-size: 14px; }
+    }
+    @media (max-width: 480px) {
+      .intro-section { padding: 50px 20px; }
+      .overview-section, .highlights-section, .notes-section { padding: 50px 20px; }
+      .day-content { padding: 28px 20px; }
+    }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div style="margin-bottom:20px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="76" height="76" style="display:block;margin:0 auto 8px;">
+        <circle cx="80" cy="80" r="74" fill="none" stroke="#FDFBF7" stroke-width="2"/>
+        <circle cx="80" cy="80" r="68" fill="none" stroke="#FDFBF7" stroke-width="0.5"/>
+        <ellipse cx="80" cy="78" rx="38" ry="40" fill="none" stroke="#FDFBF7" stroke-width="4.5"/>
+        <path d="M 62,44 L 80,112 L 98,44" fill="none" stroke="#FDFBF7" stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square"/>
+      </svg>
+    </div>
+    <p class="hero-eyebrow">A Cultural Journey</p>
+    <h1 class="hero-title">Island Stories</h1>
+    <p class="hero-subtitle">Cultural Masterpieces &middot; 12 Nights &middot; 13 Days &middot; Sri Lanka</p>
+  </div>
+  <div class="hero-scroll">
+    <span>SCROLL</span>
+    <span></span>
+  </div>
+</section>
+
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <a href="#day1" class="nav-item"><span class="nav-date">01&ndash;03</span>Sigiriya</a>
+    <a href="#day2" class="nav-item"><span class="nav-date">04&ndash;05</span>Kandy</a>
+    <a href="#day3" class="nav-item"><span class="nav-date">06&ndash;07</span>Nuwara Eliya</a>
+    <a href="#day4" class="nav-item"><span class="nav-date">08&ndash;09</span>Haputale</a>
+    <a href="#day5" class="nav-item"><span class="nav-date">10&ndash;12</span>Weligama</a>
+    <a href="#day6" class="nav-item"><span class="nav-date">13</span>Departure</a>
+  </div>
+</nav>
+
+<section class="intro-section">
+  <div class="container">
+    <p class="section-label">Welcome to the Island</p>
+    <p class="intro-text">
+      Sri Lanka, a tropical gem in the Indian Ocean, is home to a vibrant tapestry of cultures &mdash; where Sinhalese, Tamil, Muslim, and Burgher communities coexist, embracing Buddhist, Hindu, Islamic, and Christian traditions. Shaped by centuries of colonial rule and ancient ties to India, every corner of the island offers a glimpse into its rich and layered heritage.
+    </p>
+    <div class="intro-divider"><span>&#10022;</span></div>
+    <p class="intro-text">
+      From the fortress rock of Sigiriya to the misty highland estates of Haputale, and from the ancient temples of Kandy to the cliffside luxury of Weligama &mdash; this 13-day cultural journey weaves together Sri Lanka&rsquo;s greatest stories through its monuments, traditions, and people.
+    </p>
+  </div>
+</section>
+
+<section class="overview-section" id="overview">
+  <div class="container-wide">
+    <p class="section-label">At a Glance</p>
+    <h2 class="section-title">Itinerary <em>Outline</em></h2>
+    <p class="section-sub">12 Nights &middot; 13 Days &middot; Sri Lanka</p>
+    <table class="itinerary-table">
+      <thead>
+        <tr>
+          <th>Day</th><th>Activity</th><th>Location</th><th>Hotel</th><th>Meals</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-date">Day 01</span></td>
+          <td class="td-activity">Arrival &mdash; Sigiriya &middot; Traditional Dance Lesson</td>
+          <td><span class="td-location">Sigiriya</span></td>
+          <td class="td-hotel">Water Garden</td>
+          <td><span class="td-meals"><span class="meal-badge meal-d">D</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 02</span></td>
+          <td class="td-activity">Sigiriya Rock Fortress &middot; Village Experience</td>
+          <td><span class="td-location">Sigiriya</span></td>
+          <td class="td-hotel">Water Garden</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 03</span></td>
+          <td class="td-activity">Polonnaruwa &middot; Optional: Dambulla Cave Temple</td>
+          <td><span class="td-location">Sigiriya</span></td>
+          <td class="td-hotel">Water Garden</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 04</span></td>
+          <td class="td-activity">Sigiriya &mdash; Matale Heritage Centre &mdash; Kandy &middot; Temple of Tooth</td>
+          <td><span class="td-location">Kandy</span></td>
+          <td class="td-hotel">Taru Villas</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 05</span></td>
+          <td class="td-activity">Three Temple Loop &middot; Traditional Drum Lesson</td>
+          <td><span class="td-location">Kandy</span></td>
+          <td class="td-hotel">Taru Villas</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 06</span></td>
+          <td class="td-activity">Kandy &mdash; Nuwara Eliya</td>
+          <td><span class="td-location">Nuwara Eliya</span></td>
+          <td class="td-hotel">Warwick Garden</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 07</span></td>
+          <td class="td-activity">Natural Dye Experience &middot; Meenamma&rsquo;s Tea Experience</td>
+          <td><span class="td-location">Nuwara Eliya</span></td>
+          <td class="td-hotel">Warwick Garden</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 08</span></td>
+          <td class="td-activity">Scenic Train Ride &mdash; Nuwara Eliya to Haputale</td>
+          <td><span class="td-location">Haputale</span></td>
+          <td class="td-hotel">Thotalagala Plantation House</td>
+          <td><span class="td-meals"><span class="meal-badge meal-ai">AI</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 09</span></td>
+          <td class="td-activity">At Leisure</td>
+          <td><span class="td-location">Haputale</span></td>
+          <td class="td-hotel">Thotalagala Plantation House</td>
+          <td><span class="td-meals"><span class="meal-badge meal-ai">AI</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 10</span></td>
+          <td class="td-activity">Haputale &mdash; Weligama</td>
+          <td><span class="td-location">Weligama</span></td>
+          <td class="td-hotel">Cape Weligama</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 11</span></td>
+          <td class="td-activity">Galle Dutch Fort &middot; Mask Making</td>
+          <td><span class="td-location">Weligama</span></td>
+          <td class="td-hotel">Cape Weligama</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 12</span></td>
+          <td class="td-activity">At Leisure &middot; Optional: Toddy Tapping &middot; Sunset Cruise</td>
+          <td><span class="td-location">Weligama</span></td>
+          <td class="td-hotel">Cape Weligama</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+        <tr>
+          <td><span class="td-date">Day 13</span></td>
+          <td class="td-activity">Weligama &mdash; Airport</td>
+          <td><span class="td-location">&mdash;</span></td>
+          <td class="td-hotel">On Board</td>
+          <td><span class="td-meals"><span class="meal-badge meal-b">B</span></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="overview-section" style="background:var(--white); padding:70px 24px;">
+  <div class="container-wide">
+    <p class="section-label">Your Stays</p>
+    <h2 class="section-title">Hotels <em>&amp; Accommodations</em></h2>
+    <table class="itinerary-table" style="margin-top:40px;">
+      <thead>
+        <tr>
+          <th>City</th><th>Hotel</th><th>Room</th><th>Meal Plan</th><th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-location">Sigiriya</span></td>
+          <td class="td-hotel">Water Garden Resort &amp; Spa</td>
+          <td>Deluxe Villa</td>
+          <td>Breakfast &amp; Dinner</td>
+          <td><strong>3 Nights</strong></td>
+        </tr>
+        <tr>
+          <td><span class="td-location">Kandy</span></td>
+          <td class="td-hotel">Taru Villas</td>
+          <td>Deluxe Room</td>
+          <td>Bed &amp; Breakfast</td>
+          <td><strong>2 Nights</strong></td>
+        </tr>
+        <tr>
+          <td><span class="td-location">Nuwara Eliya</span></td>
+          <td class="td-hotel">Warwick Garden</td>
+          <td>Luxury Room</td>
+          <td>Breakfast &amp; Dinner</td>
+          <td><strong>2 Nights</strong></td>
+        </tr>
+        <tr>
+          <td><span class="td-location">Haputale</span></td>
+          <td class="td-hotel">Thotalagala Plantation House</td>
+          <td>Suite</td>
+          <td>All Inclusive</td>
+          <td><strong>2 Nights</strong></td>
+        </tr>
+        <tr>
+          <td><span class="td-location">Weligama</span></td>
+          <td class="td-hotel">Cape Weligama</td>
+          <td>Junior Suite</td>
+          <td>Bed &amp; Breakfast</td>
+          <td><strong>3 Nights</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="highlights-section">
+  <div class="container-wide">
+    <p class="section-label">Signature Experiences</p>
+    <h2 class="section-title">Highlights</h2>
+    <div class="highlights-grid">
+      <div class="highlight-item"><span class="highlight-text">Traditional Dance Lesson at the Habarana Cultural Centre</span></div>
+      <div class="highlight-item"><span class="highlight-text">Sigiriya Rock Fortress &mdash; the 5th-century citadel rising sheer from the plains</span></div>
+      <div class="highlight-item"><span class="highlight-text">Village Experience at Hiriwaduna &mdash; paddy fields, boat rides &amp; local cooking</span></div>
+      <div class="highlight-item"><span class="highlight-text">Cycling through the UNESCO-listed ancient city of Polonnaruwa</span></div>
+      <div class="highlight-item"><span class="highlight-text">Matale Heritage Centre &mdash; batik &amp; textile arts by renowned artist Ena de Silva</span></div>
+      <div class="highlight-item"><span class="highlight-text">Temple of the Sacred Tooth Relic &mdash; the crown jewel of Kandy</span></div>
+      <div class="highlight-item"><span class="highlight-text">Three Temple Loop &mdash; Gadaladeniya, Lankatilaka &amp; Embekka</span></div>
+      <div class="highlight-item"><span class="highlight-text">Traditional Drum Lesson with a master percussionist</span></div>
+      <div class="highlight-item"><span class="highlight-text">Meenamma&rsquo;s Tea Experience &mdash; life on a Sri Lankan hill-country estate</span></div>
+      <div class="highlight-item"><span class="highlight-text">Scenic train ride through tea country from Nuwara Eliya to Haputale</span></div>
+      <div class="highlight-item"><span class="highlight-text">Galle Dutch Fort &mdash; history, masks &amp; colonial intrigue</span></div>
+      <div class="highlight-item"><span class="highlight-text">Optional: Toddy Tapping &amp; Sunset Cruise along the southern coast</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DAYS 01-03: SIGIRIYA -->
+<section class="day-card" id="day1">
+  <div class="day-image" style="background-image:url('images/sigiriya.jpg'); background-position:center center;"></div>
+  <div class="day-content">
+    <div class="day-number">01&ndash;03</div>
+    <div class="day-label">Days 01&ndash;03 &middot; Cultural Triangle</div>
+    <h2 class="day-title">Sigiriya &mdash; Rock, Ruins &amp; Village Life</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      <p><strong>Day 01: Arrival &mdash; Sigiriya</strong></p>
+      <p>Ayubowan! Welcome to Sri Lanka. Upon arrival, a friendly representative will greet you as you step off the aircraft and guide you through immigration to the Silk Route Lounge. Here, you can relax, freshen up, and enjoy a refreshing cup of tea while your luggage is collected. Your designated chauffeur guide will then transfer you to Sigiriya.</p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Airport &mdash; Sigiriya | 111 km | Approx. 3 hours 30 minutes</span></div>
+      <p>For a more exclusive and breathtaking journey, opt for a helicopter transfer &mdash; skipping the long drive while soaking in Sri Lanka&rsquo;s stunning landscapes from a spectacular bird&rsquo;s-eye view. Approx. 30 minutes by air.</p>
+      <p>Check in at the hotel. This evening, engage in a traditional Sri Lankan dance lesson at the Habarana Cultural Centre. Step into the rhythmic heart of Sri Lanka with an inspiring lesson led by a professional instructor, learning the expressive movements, graceful postures, and captivating rhythms that define Sri Lanka&rsquo;s classical dance heritage. Participants receive a Certificate of Completion at the end of the session. <em>Approx. 1.5 hours</em></p>
+      <div class="day-divider" style="margin:24px 0;"></div>
+      <p><strong>Day 02: Sigiriya Rock Fortress &amp; Village Experience</strong></p>
+      <p>After an early breakfast, proceed to visit Sigiriya Rock Citadel &mdash; a spectacular 5th-century archaeological site built on a giant rock rising sheer and impregnable from the plains. A moat, ramparts, extensive gardens, and the frescoes of the &lsquo;Heavenly Maidens&rsquo; ring the base of the rock. As you descend, your porter will have laid out mats and Sri Lankan delicacies at a shaded rest spot &mdash; a welcome respite after the 1,200 steps to the summit. <em>Approx. 3 hours</em></p>
+      <p>Proceed to Hiriwaduna for a village experience &mdash; journey aboard a Land Master through paddy fields and jungle trails, learn about traditional cultivation, handpick fresh vegetables, glide across a serene lake on a boat ride, and enjoy a traditional Sri Lankan lunch at a local village home. <em>Approx. 3 hours</em></p>
+      <div class="day-divider" style="margin:24px 0;"></div>
+      <p><strong>Day 03: Polonnaruwa</strong></p>
+      <p>After an early breakfast, proceed to Polonnaruwa &mdash; a UNESCO World Heritage Site &mdash; for a cycling exploration of its magnificent ruins, graceful statues, and timeworn monuments that once formed the heart of the Sinhalese kingdom. Your knowledgeable host will bring its stories to life through the most significant sites and hidden treasures. <em>Approx. 3 hours</em></p>
+      <p><strong>Optional:</strong> Visit Dambulla Cave Temple &mdash; built by King Walagambahu in the 1st century BC, Dambulla is the most impressive of Sri Lanka&rsquo;s cave temples. The complex of five caves features over 2,000 sq. metres of painted walls and ceilings &mdash; the largest area of paintings found in the world &mdash; and over 150 images of the Buddha.</p>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Water Garden Resort &amp; Spa</div>
+      <div class="hotel-room">Deluxe Villa &middot; Sigiriya &middot; Breakfast &amp; Dinner</div>
+    </div>
+  </div>
+</section>
+
+<!-- DAYS 04-05: KANDY -->
+<section class="day-card" id="day2">
+  <div class="day-image" style="background-image:url('images/kandy.jpg'); background-position:center 30%;"></div>
+  <div class="day-content">
+    <div class="day-number">04&ndash;05</div>
+    <div class="day-label">Days 04&ndash;05 &middot; Royal Capital</div>
+    <h2 class="day-title">Kandy &mdash; Temples, Drums &amp; Heritage</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      <p><strong>Day 04: Sigiriya &mdash; Matale &mdash; Kandy</strong></p>
+      <p>After breakfast, check out and proceed to Kandy, en route visiting a Spice and Fruit Farm in Matale. In a quiet rural village, your planter host welcomes you with farm-fresh juice before leading a guided walk through his picturesque 15-acre hillside estate. Discover pepper, papaya, cocoa, coconut, mango, and mahogany &mdash; and hear captivating stories of Sri Lanka&rsquo;s plantation heritage. <em>Approx. 3 hours</em></p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Sigiriya &mdash; Matale &mdash; Kandy | Approx. 1 hour 45 minutes to Matale</span></div>
+      <p>Continue to the Matale Heritage Centre, founded by renowned artist Ena de Silva, where Sri Lanka&rsquo;s traditional batik and textile arts are beautifully preserved. Stroll through the serene gardens and observe artisans at work, bringing intricate designs to life through age-old techniques. <em>Approx. 1 hour</em></p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Matale &mdash; Kandy | 25 km | Approx. 1 hour</span></div>
+      <p>Visit the Temple of the Sacred Tooth Relic &mdash; the World Heritage Site and last royal capital of Sri Lankan kings. This evening, step to the beat of traditional music and drumming at a cultural show enhancing the rich and vibrant culture of Sri Lanka. <em>Approx. 45 minutes</em></p>
+      <div class="day-divider" style="margin:24px 0;"></div>
+      <p><strong>Day 05: Three Temple Loop &amp; Traditional Drum Lesson</strong></p>
+      <p>After an early breakfast, immerse yourself in Sri Lanka&rsquo;s spiritual and architectural heritage on the Three Temple Loop. Begin at Gadaladeniya Temple (12th century), ride by tuk-tuk through lush paddy fields to Lankatilaka Temple, then conclude at Embekka Temple &mdash; home to an exquisitely carved wooden shrine and breathtaking countryside views. <em>Approx. 2.5 hours</em></p>
+      <p>This afternoon, discover the heartbeat of Sri Lanka through an engaging Traditional Drum Lesson with a professional percussionist whose family has mastered this ancient art for generations. Just 20 minutes from Kandy, learn the distinct rhythms, drum types, and ceremonial meanings over a cup of Ceylon tea, before joining your teacher in a short percussion harmonisation and trying on an elaborate ceremonial headdress.</p>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Taru Villas</div>
+      <div class="hotel-room">Deluxe Room &middot; Kandy &middot; Bed &amp; Breakfast</div>
+    </div>
+  </div>
+</section>
+
+<!-- DAYS 06-07: NUWARA ELIYA -->
+<section class="day-card" id="day3">
+  <div class="day-image" style="background-image:url('images/nuwara-eliya.jpg'); background-position:center center;"></div>
+  <div class="day-content">
+    <div class="day-number">06&ndash;07</div>
+    <div class="day-label">Days 06&ndash;07 &middot; Hill Country</div>
+    <h2 class="day-title">Nuwara Eliya &mdash; The City of Light</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span><span class="meal-badge meal-d">D</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      <p><strong>Day 06: Kandy &mdash; Nuwara Eliya</strong></p>
+      <p>Breakfast at the hotel, check out and proceed to Nuwara Eliya.</p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Kandy &mdash; Nuwara Eliya | 77 km | Approx. 2 hours 45 minutes</span></div>
+      <p>Misty steep roads twisting through lush green blankets of tea bushes in a cool climate remind visitors that they are within the range of the renowned British colonial retreat &mdash; Nuwara Eliya. Augmented by an English countryside atmosphere, the city of light, once governed by English and Scottish planters, is still studded with colonial bungalows, hedgerows, and one of the finest 18-hole golf courses in the world.</p>
+      <p>Arrival and check in at Warwick Garden.</p>
+      <div class="day-divider" style="margin:24px 0;"></div>
+      <p><strong>Day 07: Meenamma&rsquo;s Tea Experience</strong></p>
+      <p>Breakfast at the hotel. Morning at leisure.</p>
+      <p>Step into the heart of Sri Lanka&rsquo;s tea country with Meena Amma &mdash; a former tea picker who warmly shares her life in the upcountry estates. Stroll through lush plantations, meet the tea-picking community, and gain insight into the hard work behind every cup. Enjoy local meals prepared in a traditional country kitchen, sip freshly hand-rolled tea, and explore the estate temple and nearby school &mdash; a charming, authentic glimpse into daily life on a Sri Lankan tea estate. <em>Approx. 2 hours</em></p>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Warwick Garden</div>
+      <div class="hotel-room">Luxury Room &middot; Nuwara Eliya &middot; Breakfast &amp; Dinner</div>
+    </div>
+  </div>
+</section>
+
+<!-- DAYS 08-09: HAPUTALE -->
+<section class="day-card" id="day4">
+  <div class="day-image" style="background-image:url('images/haputale.jpg'); background-position:center center;"></div>
+  <div class="day-content">
+    <div class="day-number">08&ndash;09</div>
+    <div class="day-label">Days 08&ndash;09 &middot; Plantation Hills</div>
+    <h2 class="day-title">Haputale &mdash; Thotalagala Plantation House</h2>
+    <div class="day-meals"><span class="meal-badge meal-ai">AI</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      <p><strong>Day 08: Scenic Train Ride &mdash; Nuwara Eliya to Haputale</strong></p>
+      <p>Breakfast at the hotel. Check out and proceed to Ambewela Railway Station for a scenic train journey through Sri Lanka&rsquo;s tea country, passing gentle hills, plantations, and small villages &mdash; a relaxed glimpse into everyday life in the hill country and its long connection to tea cultivation.</p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Warwick Garden &mdash; Ambewela Station | Approx. 45 minutes by road</span></div>
+      <div class="travel-info"><span><strong>Train:</strong> Ambewela Station &mdash; Haputale Station | Approx. 2 hours</span></div>
+      <div class="travel-info"><span><strong>Transfer:</strong> Haputale Station &mdash; Thotalagala | Approx. 15 minutes</span></div>
+      <p>Arrive and check in at Thotalagala Plantation House. Enjoy a relaxed afternoon high tea at Thotalagala &mdash; estate-grown teas served with light savoury and sweet treats, reflecting the charm of a historic plantation home in the cool hill country air.</p>
+      <div class="day-divider" style="margin:24px 0;"></div>
+      <p><strong>Day 09: At Leisure</strong></p>
+      <p>Breakfast at the hotel. Spend the day at your leisure, enjoying the beautiful surroundings of the bungalow &mdash; cool air, sweeping valley views, and the unhurried rhythm of plantation life.</p>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Thotalagala Plantation House</div>
+      <div class="hotel-room">Suite &middot; Haputale &middot; All Inclusive</div>
+    </div>
+  </div>
+</section>
+
+<!-- DAYS 10-12: WELIGAMA -->
+<section class="day-card" id="day5">
+  <div class="day-image" style="background-image:url('images/weligama.jpg'); background-position:center top;"></div>
+  <div class="day-content">
+    <div class="day-number">10&ndash;12</div>
+    <div class="day-label">Days 10&ndash;12 &middot; Southern Coast</div>
+    <h2 class="day-title">Weligama &mdash; Cape &amp; the Fort</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      <p><strong>Day 10: Haputale &mdash; Weligama</strong></p>
+      <p>Breakfast at the hotel. Check out and proceed to Weligama.</p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Haputale &mdash; Weligama | 207 km | Approx. 4 hours</span></div>
+      <p>For a more exclusive and breathtaking journey, opt for a helicopter transfer &mdash; soaring over Sri Lanka&rsquo;s stunning landscapes from a spectacular bird&rsquo;s-eye view. Approx. 30 minutes by air.</p>
+      <p>Arrive and check in at Cape Weligama &mdash; a luxury cliffside resort on Sri Lanka&rsquo;s southern coast offering stunning Indian Ocean views. Set across 12 acres of lush gardens, this Relais &amp; Ch&acirc;teaux retreat features elegant villas, infinity pools, and world-class dining. Spend the afternoon at your leisure, making the most of the resort&rsquo;s exceptional facilities.</p>
+      <div class="day-divider" style="margin:24px 0;"></div>
+      <p><strong>Day 11: Galle Dutch Fort &amp; Mask Making</strong></p>
+      <p>Breakfast at the hotel. Leave for Galle Dutch Fort.</p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Weligama &mdash; Galle | 25 km | Approx. 50 minutes</span></div>
+      <p><strong>Legends &amp; Masks: A Galle Fort Experience</strong> &mdash; Your journey begins near the historic Amangalla Hotel, where you&rsquo;ll meet Mr. Liyanaarachchi, an archaeologist and expert on Sri Lanka&rsquo;s fortifications. As you walk through the fort&rsquo;s centuries-old streets, he will bring its past to life &mdash; tracing origins from the Portuguese era, through Dutch expansions and British influences. You&rsquo;ll hear about the fort&rsquo;s residents and gain rare access to restricted areas most visitors never see. After the walk, a local mask-making family from Ambalangoda will guide you through the fascinating process of mask-making &mdash; from carving the wood to painting intricate designs. Try your hand at painting your own mask to take home. <em>Approx. 3.5 hours</em></p>
+      <div class="day-divider" style="margin:24px 0;"></div>
+      <p><strong>Day 12: At Leisure</strong></p>
+      <p>Breakfast at the hotel. Rest of the day at leisure.</p>
+      <p><strong>Optional: Scent of Toddy and Cinnamon</strong> &mdash; Discover the traditional art of hand-rolling cinnamon over spiced tea, then watch a skilled tapper climb the kithul palm to draw fresh toddy. A simple yet distinctive tasting experience, both comforting and grounding. <em>(Adults only)</em></p>
+      <p><strong>Optional: Sunset Cruise</strong> &mdash; Step aboard a private catamaran for a 3-hour sunset cruise along Sri Lanka&rsquo;s breathtaking southern coast, departing from Mirissa at 3:00 PM. Enjoy gourmet canapés, refreshing beverages, swimming, and stand-up paddleboarding as the sun paints the horizon in amber and rose. <em>*Available November to April only</em></p>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">Cape Weligama</div>
+      <div class="hotel-room">Junior Suite &middot; Weligama &middot; Bed &amp; Breakfast</div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY 13: DEPARTURE -->
+<section class="day-card" id="day6">
+  <div class="day-image" style="background-image:url('images/departure.jpg'); background-position:center bottom;"></div>
+  <div class="day-content">
+    <div class="day-number">13</div>
+    <div class="day-label">Day 13 &middot; Farewell</div>
+    <h2 class="day-title">Weligama &mdash; Airport</h2>
+    <div class="day-meals"><span class="meal-badge meal-b">B</span></div>
+    <div class="day-divider"></div>
+    <div class="day-body">
+      <p>After breakfast, leave for the airport in time for your departure flight.</p>
+      <div class="travel-info"><span><strong>Travel info:</strong> Weligama &mdash; Airport | 172 km | Approx. 2 hours 30 minutes</span></div>
+      <p><em>End of Services</em></p>
+    </div>
+    <div class="hotel-block">
+      <div class="hotel-label">Hotel</div>
+      <div class="hotel-name">On Board</div>
+      <div class="hotel-room">Airport Transfer &middot; Colombo</div>
+    </div>
+  </div>
+</section>
+
+<section class="notes-section">
+  <div class="container-wide">
+    <p class="section-label">Before You Go</p>
+    <h2 class="section-title">Important <em>Notes</em></h2>
+    <div class="notes-grid">
+      <div class="note-card">
+        <div class="note-card-title">Poya Days</div>
+        <div class="note-card-text">Alcohol service is restricted on religious holidays (Poya Days). Alcohol is not available for purchase at bars or restaurants on these dates. Please contact the reception for guidance during these periods.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Check-In &amp; Check-Out</div>
+        <div class="note-card-text">Standard hotel check-in is 14:00. Standard check-out is 12:00. Early check-in and late check-out are subject to availability and may incur additional fees.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Belongings</div>
+        <div class="note-card-text">Hotel management is not responsible for lost, stolen, or damaged personal belongings during the tour. We recommend using in-room safes and exercising care with valuables.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Travel Times</div>
+        <div class="note-card-text">All travel times are approximate and subject to traffic conditions, road works, and weather. Please allow flexibility in your schedule.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Gratuities</div>
+        <div class="note-card-text">Gratuities for guides and drivers are at your discretion. We recommend presenting tips in an envelope at the end of your journey as a token of appreciation.</div>
+      </div>
+      <div class="note-card">
+        <div class="note-card-title">Dress Code</div>
+        <div class="note-card-text">Light, breathable clothing is recommended. Comfortable walking shoes are essential. At religious sites, please dress modestly &mdash; covering from knees to elbows. Men in shorts and ladies in short skirts may not be permitted entry to some sites.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div style="margin-bottom:20px;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="52" height="52" style="display:block;margin:0 auto 8px;">
+      <circle cx="80" cy="80" r="74" fill="none" stroke="#ffffff" stroke-width="2"/>
+      <circle cx="80" cy="80" r="68" fill="none" stroke="#ffffff" stroke-width="0.5"/>
+      <ellipse cx="80" cy="78" rx="38" ry="40" fill="none" stroke="#ffffff" stroke-width="4.5"/>
+      <path d="M 62,44 L 80,112 L 98,44" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="miter" stroke-linecap="square"/>
+    </svg>
+  </div>
+  <p class="footer-text">
+    <span class="footer-gold">Island Stories &middot; Cultural Masterpieces</span><br>
+    12 Nights &middot; 13 Days &middot; Sri Lanka<br><br>
+    Prepared by OV Holidays
+  </p>
+</footer>
+
+</body>
+</html>
